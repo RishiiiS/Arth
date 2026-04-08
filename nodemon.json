@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "backend/node"
+  ],
+  "ext": "js,json",
+  "ignore": [
+    "backend/python/venv/*",
+    "node_modules/*",
+    "data/*",
+    "*.pyc",
+    "__pycache__"
+  ]
+}

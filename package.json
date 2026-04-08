@@ -1,0 +1,14 @@
+{
+  "name": "video-summarization-backend",
+  "version": "1.0.0",
+  "description": "Video Summarization API",
+  "main": "backend/node/server.js",
+  "scripts": {
+    "start": "node backend/node/server.js",
+    "dev": "nodemon backend/node/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.14"
+  }
+}
