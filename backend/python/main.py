@@ -2,6 +2,7 @@ import sys
 import json
 from audio import download_audio
 from whisper_model import transcribe_audio
+from preprocess import clean_text, split_into_chunks
 
 def main():
     if len(sys.argv) < 2:
@@ -20,13 +21,20 @@ def main():
         # 2. Transcribe using local Whisper model
         transcription_result = transcribe_audio(audio_path)
         
-        # Ensure ONLY JSON is printed to stdout so Node processes it safely
+        # 3. Clean the raw text blob (stripping linguistic filler)
+        raw_text = transcription_result["text"]
+        cleaned_text = clean_text(raw_text)
+        
+        # 4. Syntactically chunk the output to respect LLM Token window limits
+        chunks = split_into_chunks(cleaned_text, max_words=200)
+
+        # 5. Emit solely valid JSON to stdout
         print(json.dumps({
             "status": "success",
             "audio_path": audio_path,
-            "transcript": transcription_result["text"],
             "language": transcription_result["language"],
-            "segments": transcription_result["segments"]
+            "clean_text": cleaned_text,
+            "chunks": chunks
         }))
         
     except Exception as e:
