@@ -3,6 +3,7 @@ import json
 from audio import download_audio
 from whisper_model import transcribe_audio
 from preprocess import clean_text, split_into_chunks
+from summarizer import summarize_chunks, generate_final_summary
 
 def main():
     if len(sys.argv) < 2:
@@ -28,16 +29,21 @@ def main():
         # 4. Syntactically chunk the output to respect LLM Token window limits
         chunks = split_into_chunks(cleaned_text, max_words=200)
 
-        # 5. Emit solely valid JSON to stdout
+        # 5. Summarize algorithmically into Chunk-Level and Final Master-Level outputs
+        chunk_summaries = summarize_chunks(chunks)
+        final_summary = generate_final_summary(chunk_summaries)
+
+        # 6. Emit solely valid JSON to stdout
         print(json.dumps({
             "status": "success",
-            "audio_path": audio_path,
+            "final_summary": final_summary,
+            "chunk_summaries": chunk_summaries,
             "language": transcription_result["language"],
-            "clean_text": cleaned_text,
-            "chunks": chunks
+            "audio_path": audio_path
         }))
         
     except Exception as e:
+        # Graceful unified crash handling enforcing unbreakable strict JSON return syntax
         print(json.dumps({
             "status": "error",
             "message": str(e)
