@@ -15,8 +15,10 @@ app.post('/process', (req, res) => {
         });
     }
 
-    // Path to the Python executable. 'python3' is commonly used on macOS/Linux environments.
-    const pythonExecutable = 'python3'; 
+    // Use venv python explicitly if it exists, fallback to python3
+    const venvPythonPath = path.join(__dirname, '..', 'python', 'venv', 'bin', 'python3');
+    const fs = require('fs');
+    const pythonExecutable = fs.existsSync(venvPythonPath) ? venvPythonPath : 'python3'; 
     const pythonScriptPath = path.join(__dirname, '..', 'python', 'main.py');
     
     // Spawn Python process

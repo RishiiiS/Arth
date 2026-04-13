@@ -1,0 +1,110 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  background: linear-gradient(135deg, #f2f8f8 0%, #e6eff0 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  z-index: 10;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.navLink {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--text-main);
+}
+
+.loginBtn {
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+.loginBtn:hover {
+  color: var(--brand-primary-hover);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.splitContainer {
+  display: flex;
+  width: 100%;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+.leftPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.rightPanel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formCard {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 480px;
+}
+
+@media (max-width: 968px) {
+  .splitContainer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .header {
+    padding: 1.5rem;
+  }
+  
+  .main {
+    padding: 1rem 1.5rem;
+  }
+  
+  .nav {
+    display: none; /* simple mobile nav hide for now */
+  }
+}

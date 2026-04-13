@@ -4,6 +4,7 @@ from audio import download_audio
 from whisper_model import transcribe_audio
 from preprocess import clean_text, split_into_chunks
 from summarizer import summarize_chunks, generate_final_summary
+from highlights import extract_highlights
 
 def main():
     if len(sys.argv) < 2:
@@ -33,11 +34,15 @@ def main():
         chunk_summaries = summarize_chunks(chunks)
         final_summary = generate_final_summary(chunk_summaries)
 
-        # 6. Emit solely valid JSON to stdout
+        # 6. Extract dynamic timeline highlights natively from transcription temporal bounds
+        highlights = extract_highlights(transcription_result.get("segments", []))
+
+        # 7. Emit solely valid JSON to stdout
         print(json.dumps({
             "status": "success",
             "final_summary": final_summary,
             "chunk_summaries": chunk_summaries,
+            "highlights": highlights,
             "language": transcription_result["language"],
             "audio_path": audio_path
         }))

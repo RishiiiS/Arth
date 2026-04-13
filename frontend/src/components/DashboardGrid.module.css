@@ -1,0 +1,324 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Card Base */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.card.p0 {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* AI Engine Card */
+.engineHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #eaf6f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.engineIcon {
+  color: var(--brand-primary);
+}
+
+.engineLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.engineTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 0.125rem;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progressTextInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.progressStatus {
+  color: var(--text-muted);
+}
+
+.progressPercent {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.progressBarBg {
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: var(--brand-light); /* Greenish from design */
+  border-radius: 999px;
+}
+
+/* Video Mockup Card */
+.videoMockup {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  height: 200px;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.videoTime {
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  width: max-content;
+}
+
+.videoControls {
+  margin-top: auto;
+  padding-bottom: 0.5rem;
+}
+
+.playBarBase {
+  height: 4px;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  position: relative;
+}
+
+.playBarFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 2px;
+}
+
+.playBarHandle {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.playBarHandleEnd {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 50%;
+}
+
+.videoInfo {
+  padding: 1.5rem;
+}
+
+.videoInfo h4 {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.videoInfo p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Right Column Cards */
+.summaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sectionLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  color: var(--brand-primary);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.iconBtn:hover {
+  background-color: #f1f5f9;
+}
+
+.summaryTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.summaryText {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.summaryText p {
+  margin-bottom: 1.25rem;
+}
+
+.summaryText p:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlights Card */
+.highlightsCard {
+  background-color: #f8fafc; /* Very light cool gray from design */
+}
+
+.highlightsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.listIcon {
+  color: var(--brand-primary);
+}
+
+.highlightsHeader h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.highlightsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.highlightItem {
+  display: flex;
+  gap: 1.5rem;
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.timestamp {
+  background-color: #e0f6f1;
+  color: var(--brand-primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  height: fit-content;
+  font-family: monospace;
+}
+
+.highlightContent h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.highlightContent p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    padding: 0 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .summaryTitle {
+    font-size: 1.5rem;
+  }
+  
+  .highlightItem {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

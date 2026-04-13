@@ -1,0 +1,140 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem 6rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #e0f6f1; /* Light brand color */
+  color: var(--brand-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.sparkleIcon {
+  color: var(--brand-primary);
+}
+
+.title {
+  font-size: 5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #1e293b; /* Very dark slate, matching reference */
+  margin-bottom: 3rem;
+  letter-spacing: -0.03em;
+}
+
+.highlight {
+  color: #38b2ac; /* Adjusted tealish matching the reference */
+}
+
+/* Update: using global brand variables from index.css for highlight if possible, but the reference shows a different shade for "in Seconds" compared to "Arth AI". The design has a more vibrant teal for "in Seconds." */
+.highlight {
+  color: #34b3a0; 
+}
+
+.inputWrapper {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05); /* very soft shadow */
+  transition: box-shadow 0.3s;
+}
+
+.inputContainer:focus-within {
+  box-shadow: 0 10px 40px -10px rgba(0, 102, 90, 0.15); /* Tinted shadow on focus */
+}
+
+.inputIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.inputArea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 1rem;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  outline: none;
+}
+
+.inputArea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.summarizeBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--brand-primary);
+  color: var(--white);
+  border: none;
+  border-radius: 9999px;
+  padding: 0.875rem 1.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.summarizeBtn:hover {
+  background-color: var(--brand-primary-hover);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  
+  .inputContainer {
+    padding-left: 1rem;
+  }
+  
+  .summarizeBtn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #ef4444; /* red-500 */
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dotsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 4px);
+  grid-template-rows: repeat(3, 4px);
+  gap: 2px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--brand-primary);
+  border-radius: 50%;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
