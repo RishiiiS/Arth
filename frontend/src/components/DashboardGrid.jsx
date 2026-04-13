@@ -2,10 +2,19 @@ import React from 'react';
 import { Activity, Share, List } from 'lucide-react';
 import styles from './DashboardGrid.module.css';
 
-const DashboardGrid = ({ progress = 0, statusMessage = 'Idle', isProcessing = false, results = null }) => {
+const DashboardGrid = ({ progress = 0, statusMessage = 'Idle', isProcessing = false, results = null, url = '' }) => {
 
   const displayProgress = isProcessing ? progress : (results ? 100 : 0);
   const displayStatus = isProcessing ? statusMessage : (results ? 'Done' : 'Waiting for input...');
+
+  const extractYTId = (link) => {
+    if (!link) return null;
+    const match = link.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/);
+    return match && match[1] ? match[1] : null;
+  };
+  const ytId = extractYTId(url);
+  const showVideo = ytId && (isProcessing || results);
+
 
   return (
     <div className={styles.gridContainer}>
@@ -43,16 +52,31 @@ const DashboardGrid = ({ progress = 0, statusMessage = 'Idle', isProcessing = fa
 
         {/* Video Thumbnail Card */}
         <div className={styles.card + ' ' + styles.p0}>
-          <div className={styles.videoMockup}>
-            <div className={styles.videoTime}>{results ? "Extracted" : "--:--"}</div>
-            <div className={styles.videoControls}>
-              <div className={styles.playBarBase}>
-                <div className={styles.playBarFill}></div>
-                <div className={styles.playBarHandle}></div>
-                <div className={styles.playBarHandleEnd}></div>
+          {showVideo ? (
+            <div className={styles.iframeContainer}>
+              <iframe 
+                width="100%" 
+                height="200" 
+                src={`https://www.youtube.com/embed/${ytId}`} 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+                style={{ display: 'block' }}
+              ></iframe>
+            </div>
+          ) : (
+            <div className={styles.videoMockup}>
+              <div className={styles.videoTime}>{results ? "Extracted" : "--:--"}</div>
+              <div className={styles.videoControls}>
+                <div className={styles.playBarBase}>
+                  <div className={styles.playBarFill}></div>
+                  <div className={styles.playBarHandle}></div>
+                  <div className={styles.playBarHandleEnd}></div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <div className={styles.videoInfo}>
             <h4>{results ? "System Upload / Extracted Video" : "Awaiting video processing..."}</h4>
             <p>Uploaded by {results ? "Arth Internal System" : "--"}</p>

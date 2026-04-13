@@ -80,6 +80,7 @@ const Home = () => {
         statusMessage={statusMessage}
         isProcessing={isProcessing}
         results={results}
+        url={url}
       />
       <footer className={styles.footer}>
         <div className={styles.footerLeft}>
